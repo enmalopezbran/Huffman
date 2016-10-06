@@ -1,18 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * Diego Fernando Rivera Escobar 15085
- * Programación orientada a objetos
- */
 public class BusquedaArbol
 {
     private Node nodoRaiz;
-    private char c;
+    private char chr;
     private char charArray[];
     private int i=0;
     public String patron = "";
@@ -30,21 +19,21 @@ public class BusquedaArbol
         }
     }
     
-    public String buscar(Node nodoRaiz, String value,char myChar)
+    public String buscar(Node nodoRaiz, String value,char miChar)
     {
         String valor ="";
         if(nodoRaiz != null)
         {
             if(nodoRaiz.left != null)
-                valor = buscar(nodoRaiz.left, value+"0", myChar);
-            if(nodoRaiz.c == myChar)
+                valor = buscar(nodoRaiz.left, value+"0", miChar);
+            if(nodoRaiz.chr == miChar)
                 return value;
 
             else
             {
                 if("".equals(valor))
                 {
-                    return buscar(nodoRaiz.right, value+"1",myChar);
+                    return buscar(nodoRaiz.right, value+"1",miChar);
                 }
                 else
                 {
@@ -59,3 +48,4 @@ public class BusquedaArbol
     }
         
 }
+    
