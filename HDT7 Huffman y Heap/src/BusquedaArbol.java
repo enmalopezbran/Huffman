@@ -1,3 +1,10 @@
+/**
+ * Clase que ordena el arbol y busca cada nodo
+ * Diego Fernando Rivera Escobar 15085
+ *Enma Lopez 15122
+ * Programación orientada a objetos
+ */
+
 public class BusquedaArbol
 {
     private Nodo nodoRaiz;
