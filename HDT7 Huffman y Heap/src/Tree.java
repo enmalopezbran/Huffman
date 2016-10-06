@@ -1,55 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * Diego Fernando Rivera Escobar 15085
- * Programación orientada a objetos
- */
-public class Tree extends Node
-{
-    private Node root;
+public class Arbol extends Nodo{
+    private Nodo root;
     
-    public Tree()
-    {
+    public Arbol(){
         root = null;
     }
     
-    public Tree(Node node1, Node node2)
-    {
-        root = super.addNode(node1, node2);
+    public Arbol(Nodo nodo1, Nodo nodo2){
+        root = super.agregarNodo(nodo1, nodo2);
     }
     
-    public void insertNode(int freq, char c)
-    {
-        root.frequency =  freq;
-        root.c = c;
-        root.left = null;
-        root.right = null;
+    public void agregarNodo(int frec, char c){
+        root.frecuencia =frec;
+        root.chr = c;
+        root.izq =null;
+        root.der = null;
+    } 
+    
+    public void agregarNodo(int frec, char chr, Nodo izq, Nodo der){
+        root.frecuencia=frec;
+        root.chr = chr;
+        this.root.izq = izq;
+        this.root.der =der;
+    
     }
     
-    public void insertNode(int freq, char c, Node left, Node right)
-    {
-        root.frequency =  freq;
-        root.c = c;
-        this.root.left = left;
-        this.root.right = right;
+    public void agregarNodo(Nodo nodo){
+        this.root.frecuencia = nodo.frecuencia;
+        this.root.chr = nodo.chr;
+        this.root.izq = nodo.izq;
+        this.root.der = nodo.der;
     }
     
-    public void insertNode(Node node)
-    {
-        this.root.frequency = node.frequency;
-        this.root.c = node.c;
-        this.root.left = node.left;
-        this.root.right = node.right;
-    }
     
-    public void insertNode(Node node1, Node node2)
-    {
-        root = super.addNode(node1, node2);   
+ 
+    public void agregarNodo(Nodo nodo1, Nodo nodo2){
+        root = super.agregarNodo(nodo1, nodo2);
+        
     }
+
 }
 
