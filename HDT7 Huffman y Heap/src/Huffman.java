@@ -1,10 +1,9 @@
 
-package hdt7;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *Lo ordena por prioridades por el codigo implementado de heap
+ * Diego Fernando Rivera Escobar 15085
+ *Enma Lopez 15122
+ * Programación orientada a objetos
  */
 import java.util.*;
 
@@ -14,10 +13,10 @@ public class Huffman {
 //	private static String value;
 	private static char charArray[]; //Convierte la cadena en un array
 	private static int table[] = new int[0x7f]; //Tiene la frecuencia del item
-        private static Nodo miNodo[]; //the main Priority Queue, the Final Tree generated is stored in spot 0.
+        private static Nodo miNodo[];
 	private static int tamanoTabla = 0;//El largo de la tabla que tiene el carater 
-        private static Arbol myTree; //A variable that holds the Tree
-        private static int tamanoNodo = 0;//all increments or decrements are made to this value
+        private static Arbol myTree; /
+        private static int tamanoNodo = 0;
         public Nodo x;
         public static BusquedaArbol busqueda; //The Class Responsible for Decoding the Huffman Trees
         
