@@ -1,3 +1,10 @@
+/**
+ *Implementa Nodo para crear un arbol binario
+ * Diego Fernando Rivera Escobar 15085
+ *Enma Lopez 15122
+ * Programación orientada a objetos
+ */
+
 public class Arbol extends Nodo{
     private Nodo root;
     
