@@ -8,16 +8,17 @@ package hdt7;
  */
 import java.util.*;
 
+
 public class Huffman {
 	
 //	private static String value;
 	private static char charArray[]; //Convierte la cadena en un array
 	private static int table[] = new int[0x7f]; //Tiene la frecuencia del item
-        private static Node miNodo[]; //the main Priority Queue, the Final Tree generated is stored in spot 0.
+        private static Nodo miNodo[]; //the main Priority Queue, the Final Tree generated is stored in spot 0.
 	private static int tamanoTabla = 0;//El largo de la tabla que tiene el carater 
-        private static Tree myTree; //A variable that holds the Tree
+        private static Arbol myTree; //A variable that holds the Tree
         private static int tamanoNodo = 0;//all increments or decrements are made to this value
-        public Node x;
+        public Nodo x;
         public static BusquedaArbol busqueda; //The Class Responsible for Decoding the Huffman Trees
         
         
@@ -29,7 +30,7 @@ public class Huffman {
             busqueda = new BusquedaArbol(x,charArray);
         }
         public char busquedaChar(String input){
-        Node head= null;
+        Nodo head= null;
         char letra;
         char now;
         int i;
@@ -38,13 +39,13 @@ public class Huffman {
            for(i = 0; i < input.length()-1; i++)
            {
                now = input.charAt(i);
-               if (now == 1 && miNodo[i].right != null)
+               if (now == 1 && miNodo[i].der != null)
                {
-                   head= miNodo[i].right;
+                   head= miNodo[i].der;
                }
-               else if (now == 0 && miNodo[i].left != null)
+               else if (now == 0 && miNodo[i].izq != null)
                {
-                   head = miNodo [i].left;
+                   head = miNodo [i].izq;
                }
            }   
         }
@@ -79,13 +80,13 @@ public class Huffman {
             
             tamanoTabla =  counter;
             counter = 0;    
-            miNodo = new Node[tamanoTabla];
+            miNodo = new Nodo[tamanoTabla];
             
             for(int i = 0; i < 127; i++)
             {
                 if(table[i] != 0)
                 {
-                    miNodo[counter]= new Node(table[i], (char)i, null, null);
+                    miNodo[counter]= new Nodo(table[i], (char)i, null, null);
                     counter++;
                 }
             }
@@ -94,15 +95,15 @@ public class Huffman {
             
         }
         
-        public static Node createTree()
+        public static Nodo createTree()
         {
            for(int i = 1; i < tamanoNodo; i++)
            {
                try
                {
-                   if(miNodo[1].frequency >= miNodo[0].frequency)
+                   if(miNodo[1].frecuencia >= miNodo[0].frecuencia)
                    {
-                       myTree = new Tree(miNodo[0],miNodo[i]);
+                       myTree = new Arbol(miNodo[0],miNodo[i]);
                        miNodo[0] = myTree;
                        moveItems(i, tamanoNodo);
                        tamanoNodo -= 1; 
@@ -113,7 +114,7 @@ public class Huffman {
                    {
                        if(i+1 < tamanoNodo)
                        {
-                            myTree = new Tree(miNodo[i], miNodo[i+1]);
+                            myTree = new Arbol(miNodo[i], miNodo[i+1]);
                             miNodo[1] = myTree;
                             moveItems(i+1, tamanoNodo);
                             sort();
@@ -123,7 +124,7 @@ public class Huffman {
                        else
                        {
                            miNodo[1] = miNodo[i];
-                           miNodo[0] = new Tree(miNodo[0], miNodo[1]);
+                           miNodo[0] = new Arbol(miNodo[0], miNodo[1]);
                        }
                    }
                }
@@ -149,19 +150,19 @@ public class Huffman {
         }
         private static void sort()
         {
-            Node temp;
+            Nodo temp;
             for(int i = tamanoNodo-1; i > 1; i--)
             {
                 for(int j = 0; j < i; j++)
                 {
-                    if(miNodo[j].frequency > miNodo[j+1].frequency)
+                    if(miNodo[j].frecuencia > miNodo[j+1].frecuencia)
                     {
                         temp = miNodo[j+1];
                         miNodo[j+1] = miNodo[j];
                         miNodo[j] = temp;
                     }
                     
-                    if(miNodo[j].frequency == miNodo[j+1].frequency && miNodo[j].left != null)
+                    if(miNodo[j].frecuencia == miNodo[j+1].frecuencia && miNodo[j].izq != null)
                     {
                         temp = miNodo[j+1];
                         miNodo[j+1] = miNodo[j];
