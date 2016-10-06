@@ -7,21 +7,22 @@
 /**
  *
  * Diego Fernando Rivera Escobar 15085
+ *Enma Lopez 15122
  * Programación orientada a objetos
  */
 public class FindChar 
 {
-    private Node nodoRaiz;
+    private Nodo nodoRaiz;
     private String myString;
     private char c;
-    public FindChar(String input, Node myNode)
+    public FindChar(String input, Nodo miNodo)
     {
-        nodoRaiz = myNode;
+        nodoRaiz = miNodo;
         myString = input;
         c = encontrar(myString, nodoRaiz);
     }
     
-    public char encontrar(String codigo, Node nodo)
+    public char encontrar(String codigo, Nodo nodo)
     {
         char letra;
         char now;
@@ -33,11 +34,11 @@ public class FindChar
                now = codigo.charAt(i);
                if (now == 1)
                {
-                   nodo= nodo.right;
+                   nodo= nodo.der;
                }
                else if (now == 0)
                {
-                   nodo = nodo.left;
+                   nodo = nodo.izq;
                }
            }   
         }
