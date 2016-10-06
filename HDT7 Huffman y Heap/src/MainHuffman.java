@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
+ *Main pide los datos y mira si no ingreso mal un codigo
  * Diego Fernando Rivera Escobar 15085
+ *Enma Lopez 15122
  * Programación orientada a objetos
  */
 import java.util.*;
