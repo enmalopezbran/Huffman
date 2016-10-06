@@ -1,49 +1,45 @@
-/*
+
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package hdt7;
 
 /**
  *
- * Diego Fernando Rivera Escobar 15085
- * Programación orientada a objetos
+ * @author enmalopezbran
  */
-public class Node
-{
-    public int frequency;
-    public char c;
-    public Node left;
-    public Node right;
+public class Nodo {
+    protected int frecuencia;
+    protected char chr;
+    protected Nodo izq, der;
     
-    public Node(int frequency, char c, Node left, Node right)
-    {
-        this.frequency = frequency;
-        this.c = c;
-        this.left = left;
-        this.right = right;
+    /*Constructor*/
+ 
+    public Nodo(int frecuencia, char chr, Nodo izq, Nodo der){
+    this.frecuencia = frecuencia;
+    this.chr = chr;
+    this.izq = izq;
+    this.der = der;
     }
-    
-    public Node()
-    {
-        //does Nothing
-    }
-    
-    public Node addNode(Node node1, Node node2)
-    {
-        if(node1.frequency < node2.frequency)
-        {
-            left = node1;
-            right = node2;
-        }
-        else
-        {
-            right = node1;
-            left = node2;
-        }
-        frequency = node1.frequency + node2.frequency;
+    public Nodo(){
         
+    }
+    
+    /*Compara la frecuencia de los nodos para poder utilizarlo como un arbol binario*/
+    /*Nodo mayor hacia la derecha, nodo menor hacia la izquierda*/
+    
+    public Nodo agregarNodo(Nodo nodo1,Nodo nodo2){
+        if(nodo1.frecuencia < nodo2.frecuencia){
+            izq = nodo1;
+            der = nodo2;
+        }else{
+            der =nodo1;
+            izq = nodo2;
+        }
+        frecuencia = nodo1.frecuencia + nodo2.frecuencia;
         return this;
     }
-    
+
 }
