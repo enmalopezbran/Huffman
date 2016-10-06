@@ -30,8 +30,15 @@ public class MainHuffman
                     case "1":
                         System.out.print("Ingrese el codigo de la letra: ");
                         value = input.nextLine();
-                        char letra = huffman.busquedaChar(value, huffman.x);
-                        System.out.println(letra);
+                        char letra = huffman.busquedaChar(value);
+                        if (letra == '*')
+                        {
+                            System.out.println("Codigo incorrecto");
+                        }
+                        else
+                        {
+                            System.out.println(letra);
+                        }
                         break;
                     case "2":
                         System.exit(0);

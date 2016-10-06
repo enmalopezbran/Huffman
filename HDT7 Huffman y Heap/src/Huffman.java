@@ -19,8 +19,7 @@ public class Huffman {
         private static Tree myTree; //A variable that holds the Tree
         private static int lengthOfNode = 0;//all increments or decrements are made to this value
         public Node x;
-        public static BusquedaArbol busqueda; //The Class Responsible for Decoding the Huffman Tree
-        public static FindChar letra;
+        public static BusquedaArbol busqueda; //The Class Responsible for Decoding the Huffman Trees
         
         
         public Huffman(String value)
@@ -30,9 +29,31 @@ public class Huffman {
             x = createTree();
             busqueda = new BusquedaArbol(x,charArray);
         }
-        public char busquedaChar(String input,Node x ){
-            char y = letra.encontrar(input, x);
-            return y;
+        public char busquedaChar(String input){
+        Node head= null;
+        char letra;
+        char now;
+        int i;
+        if (myNode[0] != null)
+        {
+           for(i = 0; i < input.length()-1; i++)
+           {
+               now = input.charAt(i);
+               if (now == 1 && myNode[i].right != null)
+               {
+                   head= myNode[i].right;
+               }
+               else if (now == 0 && myNode[i].left != null)
+               {
+                   head = myNode[i].left;
+               }
+           }   
+        }
+        if (head== null){
+            return letra = '*';
+        }
+        letra = head.c;
+        return letra;
         }
         public static void frequencyTable(String value)
 	{
