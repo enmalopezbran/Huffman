@@ -1,11 +1,11 @@
 public class BusquedaArbol
 {
-    private Node nodoRaiz;
+    private Nodo nodoRaiz;
     private char chr;
     private char charArray[];
     private int i=0;
     public String patron = "";
-    public BusquedaArbol(Node myNode, char [] charArray)
+    public BusquedaArbol(Nodo myNode, char [] charArray)
     {
         String temp;
         int i;
@@ -15,17 +15,17 @@ public class BusquedaArbol
         {
             temp = buscar(nodoRaiz, "", charArray[i]);
             patron += temp+" ";
-            System.out.println("My values: "+charArray[i]+" "+temp+" "+nodoRaiz.frequency);
+            System.out.println("My values: "+charArray[i]+" "+temp+" "+nodoRaiz.frecuencia);
         }
     }
     
-    public String buscar(Node nodoRaiz, String value,char miChar)
+    public String buscar(Nodo nodoRaiz, String value,char miChar)
     {
         String valor ="";
         if(nodoRaiz != null)
         {
-            if(nodoRaiz.left != null)
-                valor = buscar(nodoRaiz.left, value+"0", miChar);
+            if(nodoRaiz.izq != null)
+                valor = buscar(nodoRaiz.izq, value+"0", miChar);
             if(nodoRaiz.chr == miChar)
                 return value;
 
@@ -33,7 +33,7 @@ public class BusquedaArbol
             {
                 if("".equals(valor))
                 {
-                    return buscar(nodoRaiz.right, value+"1",miChar);
+                    return buscar(nodoRaiz.der, value+"1",miChar);
                 }
                 else
                 {
