@@ -1,23 +1,22 @@
+
+package hdt7;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 import java.util.*;
-/**
- *
- * Diego Fernando Rivera Escobar 15085
- * Programación orientada a objetos
- */
+
 public class Huffman {
 	
 //	private static String value;
-	private static char charArray[]; //the string coverted to characters.
-	private static int table[] = new int[0x7f]; //holds the frequency of the item
-        private static Node myNode[]; //the main Priority Queue, the Final Tree generated is stored in spot 0.
-	private static int lengthOfTable = 0;//The true length of the table that holds the characters.
+	private static char charArray[]; //Convierte la cadena en un array
+	private static int table[] = new int[0x7f]; //Tiene la frecuencia del item
+        private static Node miNodo[]; //the main Priority Queue, the Final Tree generated is stored in spot 0.
+	private static int tamanoTabla = 0;//El largo de la tabla que tiene el carater 
         private static Tree myTree; //A variable that holds the Tree
-        private static int lengthOfNode = 0;//all increments or decrements are made to this value
+        private static int tamanoNodo = 0;//all increments or decrements are made to this value
         public Node x;
         public static BusquedaArbol busqueda; //The Class Responsible for Decoding the Huffman Trees
         
@@ -34,25 +33,25 @@ public class Huffman {
         char letra;
         char now;
         int i;
-        if (myNode[0] != null)
+        if (miNodo[0] != null)
         {
            for(i = 0; i < input.length()-1; i++)
            {
                now = input.charAt(i);
-               if (now == 1 && myNode[i].right != null)
+               if (now == 1 && miNodo[i].right != null)
                {
-                   head= myNode[i].right;
+                   head= miNodo[i].right;
                }
-               else if (now == 0 && myNode[i].left != null)
+               else if (now == 0 && miNodo[i].left != null)
                {
-                   head = myNode[i].left;
+                   head = miNodo [i].left;
                }
            }   
         }
         if (head== null){
             return letra = '*';
         }
-        letra = head.c;
+        letra = head.chr;
         return letra;
         }
         public static void frequencyTable(String value)
@@ -78,53 +77,53 @@ public class Huffman {
                     counter++;
             }
             
-            lengthOfTable =  counter;
+            tamanoTabla =  counter;
             counter = 0;    
-            myNode = new Node[lengthOfTable];
+            miNodo = new Node[tamanoTabla];
             
             for(int i = 0; i < 127; i++)
             {
                 if(table[i] != 0)
                 {
-                    myNode[counter]= new Node(table[i], (char)i, null, null);
+                    miNodo[counter]= new Node(table[i], (char)i, null, null);
                     counter++;
                 }
             }
-            lengthOfNode = myNode.length;
+            tamanoNodo = miNodo.length;
             sort();
             
         }
         
         public static Node createTree()
         {
-           for(int i = 1; i < lengthOfNode; i++)
+           for(int i = 1; i < tamanoNodo; i++)
            {
                try
                {
-                   if(myNode[1].frequency >= myNode[0].frequency)
+                   if(miNodo[1].frequency >= miNodo[0].frequency)
                    {
-                       myTree = new Tree(myNode[0],myNode[i]);
-                       myNode[0] = myTree;
-                       moveItems(i, lengthOfNode);
-                       lengthOfNode -= 1; 
+                       myTree = new Tree(miNodo[0],miNodo[i]);
+                       miNodo[0] = myTree;
+                       moveItems(i, tamanoNodo);
+                       tamanoNodo -= 1; 
                        i -= 1;
                        sort();
                    }
                    else
                    {
-                       if(i+1 < lengthOfNode)
+                       if(i+1 < tamanoNodo)
                        {
-                            myTree = new Tree(myNode[i], myNode[i+1]);
-                            myNode[1] = myTree;
-                            moveItems(i+1, lengthOfNode);
+                            myTree = new Tree(miNodo[i], miNodo[i+1]);
+                            miNodo[1] = myTree;
+                            moveItems(i+1, tamanoNodo);
                             sort();
-                            lengthOfNode -= 1;
+                            tamanoNodo -= 1;
                             i -= 1;
                        }
                        else
                        {
-                           myNode[1] = myNode[i];
-                           myNode[0] = new Tree(myNode[0], myNode[1]);
+                           miNodo[1] = miNodo[i];
+                           miNodo[0] = new Tree(miNodo[0], miNodo[1]);
                        }
                    }
                }
@@ -133,14 +132,14 @@ public class Huffman {
                  //I dare this program to crash...hahaha
                }
            }
-            return myNode[0];
+            return miNodo[0];
         }
         
         private static void moveItems(int index, int length)
         {   try
             {
                 for(int i = index; i < length; i++)
-                    myNode[i] = myNode[i+1];
+                    miNodo[i] = miNodo[i+1];
                 
             }
             catch(Exception e)
@@ -151,22 +150,22 @@ public class Huffman {
         private static void sort()
         {
             Node temp;
-            for(int i = lengthOfNode-1; i > 1; i--)
+            for(int i = tamanoNodo-1; i > 1; i--)
             {
                 for(int j = 0; j < i; j++)
                 {
-                    if(myNode[j].frequency > myNode[j+1].frequency)
+                    if(miNodo[j].frequency > miNodo[j+1].frequency)
                     {
-                        temp = myNode[j+1];
-                        myNode[j+1] = myNode[j];
-                        myNode[j] = temp;
+                        temp = miNodo[j+1];
+                        miNodo[j+1] = miNodo[j];
+                        miNodo[j] = temp;
                     }
                     
-                    if(myNode[j].frequency == myNode[j+1].frequency && myNode[j].left != null)
+                    if(miNodo[j].frequency == miNodo[j+1].frequency && miNodo[j].left != null)
                     {
-                        temp = myNode[j+1];
-                        myNode[j+1] = myNode[j];
-                        myNode[j] = temp;
+                        temp = miNodo[j+1];
+                        miNodo[j+1] = miNodo[j];
+                        miNodo[j] = temp;
                     }
                 }
             }
